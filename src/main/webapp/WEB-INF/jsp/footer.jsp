@@ -19,7 +19,7 @@
   <a href="#"><i class="fa fa-flickr"></i></a>
   <a href="#"><i class="fa fa-linkedin"></i></a>
   <p class="w3-medium">
-  Powered by <a href="https://www.flipkart.com" target="_blank">AbhiiKart.in</a>
+  Powered by <a href="https://www.apr.com" target="_blank">APR.realestate.in</a>
   </p>
 </footer>
 </body>

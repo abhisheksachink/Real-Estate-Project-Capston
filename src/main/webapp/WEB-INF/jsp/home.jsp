@@ -10,7 +10,7 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-<title>Insert title here</title>
+<title>APR Real Estate</title>
 </head>
 <body style="text-align:center; background-color:grey">
 <%@include file="navigation.jsp" %>
@@ -18,16 +18,16 @@
 	<h2>${message2}</h2>
 	<!-- Slide Show -->
 <section>
-  <img class="mySlides" src="https://t4.ftcdn.net/jpg/03/09/86/97/360_F_309869755_IquCHHxF7YABo2odctUGEjMrgVDSM8qV.jpg" style="width:100%;height:400px">
-  <img class="mySlides" src="https://img1.gadgetsnow.com/gd/imgbn/31st-May-2022-DOD_2-680-x-250_2.jpg" style="width:100%;height:400px">
-  <img class="mySlides" src="https://media.istockphoto.com/id/1073935306/photo/girls-carrying-shopping-bags.jpg?s=612x612&w=0&k=20&c=JB-TrME32dc0VTnaXVxsbJIExZqR71m-iyVOnG-7puM=" style="width:100%;height:400px">
+  <img class="mySlides" src="https://images.pexels.com/photos/1546168/pexels-photo-1546168.jpeg?cs=srgb&dl=pexels-david-mcbee-1546168.jpg&fm=jpg" style="width:100%;height:400px">
+  <img class="mySlides" src="https://analyticsonline.in/blog/wp-content/uploads/2019/11/GUIDELINE-FOR-THE-REALESTATE-BEGIN-1024x597.jpg" style="width:100%;height:400px">
+  <img class="mySlides" src="https://www.shutterstock.com/image-photo/real-estate-agent-offer-house-260nw-363324191.jpg" style="width:100%;height:400px">
 </section>
 
 <!-- Band Description -->
 <section class="w3-container w3-center w3-content" style="max-width:600px">
-  <h2 class="w3-wide">AbhiiKart</h2>
-  <p class="w3-opacity"><i>We love AbhiiKart</i></p>
-  <p class="w3-justify">At our Website you can get free Products AT trial Period .<br>Our Company Provide Free Delivery within 30 mins Guaranteed Delivery</p>
+  <h2 class="w3-wide">APR Real Estate</h2>
+  <p class="w3-opacity"><i>We love APR </i></p>
+  <p class="w3-justify">At our Website you can get List of all property  .<br>Our Company Provide Property for Rent and Sold also.</p>
 </section>
 <a onclick="document.getElementById('id01').style.display='block'"  class="w3-button w3-bar-item" style="width:150px;">Login</a>
 

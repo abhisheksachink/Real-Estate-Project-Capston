@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
@@ -75,11 +77,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </style>
 <title>Insert title here</title>
 </head>
-<body>
-
+<body style="text-align:center; background-color:grey">
+<%@include file="navigation2.jsp" %>
+<h3 style="color:red">${status}</h3>
 <button class="open-button" onclick="openForm()">Add Product</button>
 <div class="form-popup" id="myForm">
-<form id="addprop" action="addProperty" method="post">
+<form id="addprop" action="addProperty/${userId}" method="post">
     <label for="configuration"><b>Configuration:</b></label>
     <input type="text" placeholder="Shop/Flat/Plot" name="configuration" required><br><br>
     <label for="offerType"><b>OfferType:</b></label>
@@ -143,12 +146,13 @@ function closeForm() {
 					<td>${property.getStreet()}</td>
 					<td><img src="${property.getPicture()}" style="width:300px;height:142px;"></td>
 					<td>${property.getPstatus()}</td>
-					<td><a href = "deleteProperty/${property.getPropId()}" class="w3-button w3-bar-item">Delete</a> </td>
+					<td><a href = "deleteProperty/${property.getPropId()}" class="w3-button w3-bar-item">Delete</a> &nbsp <a href = "updateProperty/${property.getPropId()}/${property.getConfiguration()}/${property.getOfferType()}/${property.getOfferCost()}/${property.getAreaSqft()}/${property.getCity()}/${property.getAddress()}/${property.getStreet()}/${property.getPstatus()}" class="w3-button w3-bar-item">Update</a></td>
 					</tr>
 
 			</c:forEach>
 
 	</table>
+<%@include file="footer.jsp" %>
 </body>
 </html>
 

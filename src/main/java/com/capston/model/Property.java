@@ -1,14 +1,23 @@
 package com.capston.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "Property12345")
 public class Property {
@@ -25,100 +34,36 @@ public class Property {
 	private String picture;
 	private String pstatus; // Available(true)/ Sold(false)
 	
+	@ManyToOne
+	@JoinColumn(name="user_id", nullable=false)
+	private User broker;
 	
-	
-	
+	@OneToOne(mappedBy="property1",cascade=CascadeType.ALL,fetch=(FetchType.LAZY))//this user1 is mapped by Address table User
+	private Deal deal;
+
+	public Property(int propId, String configuration, String offerType, double offerCost, double areaSqft, String city,
+			String address, String street, String picture, String pstatus, User broker, Deal deal) {
+		super();
+		this.propId = propId;
+		this.configuration = configuration;
+		this.offerType = offerType;
+		this.offerCost = offerCost;
+		this.areaSqft = areaSqft;
+		this.city = city;
+		this.address = address;
+		this.street = street;
+		this.picture = picture;
+		this.pstatus = pstatus;
+		this.broker = broker;
+		this.deal = deal;
+	}
+
 	public Property() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Property(int propId, String configuration, String offerType, double offerCost, double areaSqft, String city,
-			String address, String street, String picture, String pstatus) {
-		super();
-		this.propId = propId;
-		this.configuration = configuration;
-		this.offerType = offerType;
-		this.offerCost = offerCost;
-		this.areaSqft = areaSqft;
-		this.city = city;
-		this.address = address;
-		this.street = street;
-		this.picture = picture;
-		this.pstatus = pstatus;
-	}
-	public int getPropId() {
-		return propId;
-	}
-	public void setPropId(int propId) {
-		this.propId = propId;
-	}
-	public String getConfiguration() {
-		return configuration;
-	}
-	public void setConfiguration(String configuration) {
-		this.configuration = configuration;
-	}
-	public String getOfferType() {
-		return offerType;
-	}
-	public void setOfferType(String offerType) {
-		this.offerType = offerType;
-	}
-	public double getOfferCost() {
-		return offerCost;
-	}
-	public void setOfferCost(double offerCost) {
-		this.offerCost = offerCost;
-	}
-	public double getAreaSqft() {
-		return areaSqft;
-	}
-	public void setAreaSqft(double areaSqft) {
-		this.areaSqft = areaSqft;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getStreet() {
-		return street;
-	}
-	public void setStreet(String street) {
-		this.street = street;
-	}
-	public String getPicture() {
-		return picture;
-	}
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
-	public String getPstatus() {
-		return pstatus;
-	}
-	public void setPstatus(String pstatus) {
-		this.pstatus = pstatus;
-	}
 	
 	
-	
-	
-
-
-
-
-
-
-
-
-
 
 
 
