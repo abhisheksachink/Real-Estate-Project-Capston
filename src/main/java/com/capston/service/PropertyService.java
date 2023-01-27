@@ -28,6 +28,25 @@ public class PropertyService {
 		return property;
 	}	
 	
+public List<Property> getPropertyByCity(String city){
+		
+		List<Property> property = (List<Property>)propertyRepository.findByCity(city);
+		return property;
+	}
+
+public List<Property> getPropertyByOffer(String offerType){
+	
+	List<Property> property = (List<Property>)propertyRepository.findByOfferType(offerType);
+	return property;
+}
+
+public List<Property> getPropertyByConfiguration(String configuration){
+	
+	List<Property> property = (List<Property>)propertyRepository.findByconfiguration(configuration);
+	return property;
+}
+
+	
 //	public List<Property> viewProperty(int userId) {
 //		Optional<User> user1 = userRepository.findById(userId);
 //		List<Property> property= propertyRepository.findAllByUserId(user1.get());

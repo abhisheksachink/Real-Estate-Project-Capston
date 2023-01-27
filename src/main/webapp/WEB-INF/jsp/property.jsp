@@ -13,7 +13,23 @@
 <body style="text-align:center; background-color:grey">
 <%@include file="navigation2.jsp" %>
 <h3 style="color:red">${status}</h3>
+<form action="fetchPropertyByCity"method="post">
+    <label for="cityInput">City:</label>
+    <input type="text" id="cityInput" name="cityInput" placeholder="Type City F0r Property Search">
+    <button type="submit">Search By City</button>
+</form>
 
+<form action="fetchPropertyByOffer"method="post">
+    <label for="offertype">Offer Type:</label>
+    <input type="text" id="offertype" name="offerType" placeholder="Type offer type for Property Search">
+    <button type="submit">Search By Offer Type</button>
+</form>
+
+<form action="fetchPropertyByPropType"method="post">
+    <label for="configuration">Prop Type:</label>
+    <input type="text" id="configuration" name="configuration" placeholder="Type Property type for Property Search">
+    <button type="submit">Search By Property Type</button>
+</form>
 <table border="1" style="text-align:center; margin:auto; width:100%">
 		<tr>
 			<th>Property Type </th>
