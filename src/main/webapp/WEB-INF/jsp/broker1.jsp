@@ -75,7 +75,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   opacity: 1;
 }
 </style>
-<title>Insert title here</title>
+<title>Broker Admin</title>
 </head>
 <body style="text-align:center; background-color:grey">
 <%@include file="navigation2.jsp" %>

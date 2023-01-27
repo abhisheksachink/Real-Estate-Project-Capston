@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.capston.exception.PropertyNotFoundException;
 import com.capston.model.Property;
 import com.capston.model.User;
 import com.capston.service.PropertyService;
@@ -65,12 +66,19 @@ public class BrokerController {
 	}
 	
 	@RequestMapping(value="/deleteProperty/{propId}", method = RequestMethod.GET)
-	public String removeProperty(ModelMap map,@PathVariable("propId") Integer propId,HttpServletRequest request,HttpSession session ,Property property) {
+	public String removeProperty(ModelMap map,@PathVariable("propId") Integer propId,HttpServletRequest request,HttpSession session ,Property property) throws PropertyNotFoundException {
 		
 
+		try {
+			
+		
 
 		pservice.removeProperty(propId);
 		map.addAttribute("status","Property Deleted Successfully");
+		}
+			catch (Exception e) {
+				throw new PropertyNotFoundException("The entered propId is not found! Enter a valid propId to delete.");
+		}
 		return "broker1";
 			
 	
@@ -97,7 +105,7 @@ public class BrokerController {
 	}
 	
 	@RequestMapping(value="/updatePropertyNow/{userId}/{propId}", method = RequestMethod.GET)
-	public String updatePropertyNow(ModelMap map,@PathVariable("userId") Integer userId,@PathVariable("propId") Integer propId,HttpServletRequest request,HttpSession session ,Property property,User user) {
+	public String updatePropertyNow(ModelMap map,@PathVariable("userId") Integer userId,@PathVariable("propId") Integer propId,HttpServletRequest request,HttpSession session ,Property property,User user)throws PropertyNotFoundException {
 		
 		String config=request.getParameter("configuration") ;
 		String offerType=request.getParameter("offerType") ;
@@ -108,6 +116,8 @@ public class BrokerController {
 		String street=request.getParameter("street") ;
 		String picture=request.getParameter("picture") ;
 		String status=request.getParameter("status") ;
+		try {
+			
 		
 		user.setUser_id(userId);
 		property.setPropId(propId);
@@ -123,6 +133,10 @@ public class BrokerController {
 		property.setPstatus(status);
 		pservice.editProperty(property);
 		map.addAttribute("status","Property Updated Successfully");
+		}
+		catch(Exception e) {
+			throw new PropertyNotFoundException("The property does not exists");
+		}
 		return "broker1";
 			
 	

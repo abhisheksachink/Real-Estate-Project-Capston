@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.capston.exception.DealNotAvailableException;
 import com.capston.model.Deal;
 import com.capston.model.Property;
 import com.capston.model.User;
@@ -29,8 +30,9 @@ public class DealController {
 	PropertyService pservice;
 
 	@RequestMapping(value="/addtoDeal/{propId}/{userId}/{dealcost}", method = RequestMethod.GET)
-	public String addToDeal(ModelMap map,@PathVariable("userId") Integer userId,@PathVariable("dealcost") Double dealcost,@PathVariable("propId") Integer propId,HttpServletRequest request,HttpSession session ,Deal deal,Property property,User user) {
-		
+	public String addToDeal(ModelMap map,@PathVariable("userId") Integer userId,@PathVariable("dealcost") Double dealcost,@PathVariable("propId") Integer propId,HttpServletRequest request,HttpSession session ,Deal deal,Property property,User user) throws DealNotAvailableException{
+	
+		try {
 		user.setUser_id(userId);
 		property.setPropId(propId);
 		property.setPstatus("Sold");
@@ -54,6 +56,11 @@ public class DealController {
 		map.addAttribute("city",property.getCity());
 		map.addAttribute("area",property.getAreaSqft());
 		map.addAttribute("status","Deal Successfully with following details:-");
+		}
+		catch(Exception e) {
+			throw new DealNotAvailableException("Same Customer HAS NOT ALLOWED TO Already Booked Property");
+		}
+		
 		return "deal";
 			
 	

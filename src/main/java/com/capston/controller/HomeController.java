@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.capston.exception.CustomerNotFoundException;
+import com.capston.exception.PropertyNotFoundException;
+import com.capston.exception.UserNotFoundException;
 import com.capston.model.Property;
 import com.capston.model.User;
 import com.capston.service.LoginService;
@@ -60,8 +64,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/processLogin", method = RequestMethod.POST)
-	public ModelAndView displayProduct(ModelMap map, HttpServletRequest request,@ModelAttribute("user") User user) {
-		
+	public ModelAndView displayProduct(ModelMap map, HttpServletRequest request,@ModelAttribute("user") User user) throws UserNotFoundException,PropertyNotFoundException,CustomerNotFoundException{
 		String userName = request.getParameter("uname");
 		String password = request.getParameter("pwd");
 		String role =request.getParameter("role");
@@ -92,6 +95,8 @@ public class HomeController {
 		else {
 			ModelAndView mav2 = new ModelAndView("error");
 			return mav2;
+			
+		
 			
 		}
 		
