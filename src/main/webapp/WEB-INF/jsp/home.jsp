@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@
 </head>
 <body style="text-align:center; background-color:grey">
 <%@include file="navigation.jsp" %>
+<h4 style="color:red">${loginstatus}</h4>
 	<h1 style="color:red">${message1}</h1>
 	<h2>${message2}</h2>
 	<!-- Slide Show -->

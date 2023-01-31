@@ -93,7 +93,8 @@ public class HomeController {
 			
 		}
 		else {
-			ModelAndView mav2 = new ModelAndView("error");
+			map.addAttribute("loginstatus","Wrong Credentials of login user Try Again");
+			ModelAndView mav2 = new ModelAndView("home");
 			return mav2;
 			
 		
