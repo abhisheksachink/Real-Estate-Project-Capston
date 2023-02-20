@@ -1,16 +1,14 @@
 package com.capston.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,6 +20,7 @@ import com.capston.model.Property;
 import com.capston.model.User;
 import com.capston.service.LoginService;
 import com.capston.service.PropertyService;
+import com.capston.service.UserService;
 
 
 
@@ -34,6 +33,9 @@ public class HomeController {
 	
 	@Autowired
 	PropertyService pservice;
+	
+	@Autowired
+	UserService uservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView displayHello() {
@@ -63,18 +65,37 @@ public class HomeController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/addUser", method = RequestMethod.POST)
+	public String addToProperty(ModelMap map,HttpServletRequest request,HttpSession session ,User user) {
+		
+		String userName=request.getParameter("uname") ;
+		String passord=request.getParameter("pwd") ;
+		String userType=request.getParameter("role") ;
+		
+		user.setUser_name(userName);
+		user.setUser_pwd(passord);
+		user.setRole(userType);
+		uservice.saveUser(user);
+		map.addAttribute("status","User Registered Successfully");
+		return "home";
+			
+	
+	}
+	
 	@RequestMapping(value = "/processLogin", method = RequestMethod.POST)
 	public ModelAndView displayProduct(ModelMap map, HttpServletRequest request,@ModelAttribute("user") User user) throws UserNotFoundException,PropertyNotFoundException,CustomerNotFoundException{
 		String userName = request.getParameter("uname");
 		String password = request.getParameter("pwd");
-		String role =request.getParameter("role");
+		String role =service.getUserRole(userName, password);
 		int userId=service.getUserId(userName, password);
+//		PropertyCriteria cr=userId;
 	
 		if(service.validateUser(userName, password) && role.equalsIgnoreCase("Broker")) {
 			map.addAttribute("name",userName);
 			map.addAttribute("userId",userId);
 			map.addAttribute("userId", userId);
 			ModelAndView mav1 = new ModelAndView("broker1");
+//			List<Property> property= pservice.ListPropertyByCriteria(user.getUser_id());
 			List<Property> property= pservice.getProperty();
 			
 			mav1.addObject("allProperties", property);

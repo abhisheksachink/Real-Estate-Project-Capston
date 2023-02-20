@@ -45,7 +45,7 @@ public class DealController {
 		
 		dservice.saveDeal(deal);
 		int dealId=deal.getDealId();
-		Optional<Deal> d=dservice.showDeal(dealId);
+//		Optional<Deal> d=dservice.showDeal(dealId);
 //		pservice.editProperty(property);
 		map.addAttribute("propId",propId);
 		map.addAttribute("dealcost",dealcost);

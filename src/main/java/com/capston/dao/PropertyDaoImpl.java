@@ -20,6 +20,7 @@ public class PropertyDaoImpl implements PropertyDao{
 		String k =criteria.getCity();
 		double l =criteria.getMinCost();
 		double m=criteria.getMaxCost();
+		int pr=criteria.getBroker();
 		
 		if(i ==null || i=="")
 			i="%";
@@ -30,13 +31,14 @@ public class PropertyDaoImpl implements PropertyDao{
 		if(m==0)
 			m=Double.MAX_VALUE;
 		
-		TypedQuery<Property> q = em.createQuery("select p from Property12345 p where  p.configuration like :i  and p.offerType like:j and  p.city like :k and (p.offerCost Between :l and :m )", Property.class);
+		TypedQuery<Property> q = em.createQuery("select p from Property12345 p where  p.configuration like :i and p.broker like :pr  and p.offerType like:j and  p.city like :k and (p.offerCost Between :l and :m )", Property.class);
 		
 		q.setParameter("i", i);
 		q.setParameter("j", j);
 		q.setParameter("k", k);
 		q.setParameter("l", l);
 		q.setParameter("m", m);
+		q.setParameter("pr", pr);
 		return q.getResultList();
 	}
 

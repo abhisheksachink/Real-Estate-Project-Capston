@@ -10,7 +10,7 @@
 
 <!-- Navigation -->
 <nav class="w3-bar w3-black">
-  <a href="home" class="w3-button w3-bar-item">Home</a>
+  <a href="<%=request.getContextPath()%>/home" class="w3-button w3-bar-item">Home</a>
   <a href="#band" class="w3-button w3-bar-item">APR RealEstate</a>
   <a href="#tour" class="w3-button w3-bar-item">Tour</a>
   <a href="#contact" class="w3-button w3-bar-item">Contact</a>

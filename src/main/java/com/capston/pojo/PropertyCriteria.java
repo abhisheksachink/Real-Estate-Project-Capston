@@ -6,6 +6,7 @@ public class PropertyCriteria {
 	private String city; // Not specified then all
 	private double minCost; // Not specified then 0
 	private double maxCost; // Not specified then max double value
+	private int broker;
 	
 	
 	public PropertyCriteria() {
@@ -14,14 +15,21 @@ public class PropertyCriteria {
 	}
 
 
-	public PropertyCriteria(String config, String offer, String city, double minCost, double maxCost) {
+	
+
+
+	public PropertyCriteria(String config, String offer, String city, double minCost, double maxCost, int broker) {
 		super();
 		this.config = config;
 		this.offer = offer;
 		this.city = city;
 		this.minCost = minCost;
 		this.maxCost = maxCost;
+		this.broker = broker;
 	}
+
+
+
 
 
 	public String getConfig() {
@@ -71,6 +79,22 @@ public class PropertyCriteria {
 
 	public void setMaxCost(double maxCost) {
 		this.maxCost = maxCost;
+	}
+
+
+
+
+
+	public int getBroker() {
+		return broker;
+	}
+
+
+
+
+
+	public void setBroker(int broker) {
+		this.broker = broker;
 	}
 	
 	

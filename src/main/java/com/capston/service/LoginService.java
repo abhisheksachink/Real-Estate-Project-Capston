@@ -49,4 +49,18 @@ public class LoginService {
 		return userid;
 		
 	}
+	public String getUserRole(String userName, String password) {
+		List<User> users = (List<User>)repository.findAll();
+	
+		String userRole = null;
+		for(User usr: users) {
+			if(usr.getUser_name().equals(userName) && usr.getUser_pwd().equals(password)) {
+				userRole=usr.getRole();
+				
+			}
+			
+	}
+		return userRole;
+		
+	}
 }

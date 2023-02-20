@@ -1,5 +1,6 @@
 package com.capston.service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.capston.model.Property;
 import com.capston.model.User;
+import com.capston.pojo.PropertyCriteria;
 import com.capston.repository.PropertyRepository;
 import com.capston.repository.UserRepository;
 
@@ -65,4 +67,20 @@ public List<Property> getPropertyByConfiguration(String configuration){
 		propertyRepository.save(property);
 	}
 
+	
+//	public List<Property> ListPropertyByCriteria(PropertyCriteria criteria) {
+//
+//		return propertyRepository.fetchPropertyByCriteria(criteria);
+//	}
+//	
+//	public List<Property> getPropertyByUserId(int userId) {
+//		List<Property>p = (List<Property>) propertyRepository.findAll();
+//		p.forEach(user ->{
+//			Collection<? extends Property> property =(Collection<? extends Property>)propertyRepository.findById(userId);
+//		List<Property> prop;
+//		prop.addAll(property);
+//		});
+//			return prop;
+//		
+//	}
 }
